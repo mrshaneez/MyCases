@@ -1,0 +1,21 @@
+# Cloudflare Pages reads this file and applies these headers to the served site.
+# Anything in public/ is copied to the root of dist/ at build time.
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noindex, nofollow
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# A content security policy for this app, left off by default because a wrong
+# one fails silently and you would be left wondering why the fonts or the model
+# features stopped working. To turn it on, delete the # from the line below and
+# redeploy, then check: Thaana still renders, and Ask returns an answer.
+#
+# The four sources it allows are exactly what the app needs: 'unsafe-inline'
+# styles because the stylesheet is injected as a <style> element, data: fonts
+# because the two Dhivehi typefaces are embedded as woff2 data URIs, and
+# api.anthropic.com because that is the only host it ever contacts.
+#
+#  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self' https://api.anthropic.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
